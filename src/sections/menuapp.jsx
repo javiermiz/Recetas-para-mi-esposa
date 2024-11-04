@@ -1,41 +1,44 @@
-import React, { useState } from 'react';
-
-const ingredients = [
-  'Huevos',
-  'Leche',
-  'Harina',
-  'Pollo',
-  'Carne',
-  'Pescado',
-  'Arroz',
-  'Pasta',
-  'Queso',
-  'Tomate',
-  'Lechuga',
-  'Zanahoria',
-  'Cebolla',
-  'Ajo',
-  'Aceite de oliva',
-  'Sal',
-  'Pimienta',
-  'Azúcar',
-];
+import React, { useState, useEffect } from 'react';
+import { getCollection } from 'astro:content';
+import { useStore } from '@nanostores/react';
+import { selectedIngredients, toggleIngredient } from '../stores/filter';
 
 export default function MenuApp() {
   const [activeTab, setActiveTab] = useState('home');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [allIngredients, setAllIngredients] = useState([]);
+  const $selectedIngredients = useStore(selectedIngredients);
+
+  useEffect(() => {
+    async function fetchIngredients() {
+      const recipes = await getCollection('receta');
+      const ingredientSet = new Set();
+      recipes.forEach((recipe) => {
+        recipe.data.ingredients.forEach((ingredient) => {
+          ingredientSet.add(ingredient);
+        });
+      });
+      setAllIngredients(Array.from(ingredientSet).sort());
+    }
+    fetchIngredients();
+
+    // Load selected ingredients from local storage
+    const storedIngredients = localStorage.getItem('selectedIngredients');
+    if (storedIngredients) {
+      selectedIngredients.set(JSON.parse(storedIngredients));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save selected ingredients to local storage whenever it changes
+    localStorage.setItem(
+      'selectedIngredients',
+      JSON.stringify($selectedIngredients)
+    );
+  }, [$selectedIngredients]);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
-  };
-
-  const toggleIngredient = (ingredient) => {
-    setSelectedIngredients((prev) =>
-      prev.includes(ingredient)
-        ? prev.filter((i) => i !== ingredient)
-        : [...prev, ingredient]
-    );
   };
 
   return (
@@ -170,12 +173,12 @@ export default function MenuApp() {
             </button>
           </div>
           <div className='flex flex-wrap gap-2 max-h-[60vh] overflow-y-auto'>
-            {ingredients.map((ingredient) => (
+            {allIngredients.map((ingredient) => (
               <button
                 key={ingredient}
                 onClick={() => toggleIngredient(ingredient)}
                 className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                  selectedIngredients.includes(ingredient)
+                  $selectedIngredients.includes(ingredient)
                     ? 'bg-green-500 text-white'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
@@ -189,7 +192,7 @@ export default function MenuApp() {
               onClick={toggleDrawer}
               className='w-full bg-orange-500 text-white py-2 px-4 rounded-full font-medium hover:bg-orange-600 transition-colors'
             >
-              Aplicar filtros ({selectedIngredients.length})
+              Aplicar filtros ({$selectedIngredients.length})
             </button>
           </div>
         </div>

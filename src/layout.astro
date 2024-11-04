@@ -1,8 +1,6 @@
 ---
 // src/layouts/Layout.astro
 import Header from './sections/header.astro';
-import MenuApp from './sections/menuapp'
-
 
 interface Props {
   title: string;
@@ -20,11 +18,16 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex flex-col min-h-screen">
-    <Header />
-    <main >
-      <slot />
-    </main>
-    <MenuApp client:load />
+    <div class="hidden md:block">
+      Porfavor usar en celular
+    </div>
+    <div class="md:hidden">
+
+      <Header />
+      <main >
+        <slot />
+      </main>
+    </div>
   </body>
 </html>
 
