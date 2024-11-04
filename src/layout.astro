@@ -1,0 +1,48 @@
+---
+// src/layouts/Layout.astro
+import Header from './sections/header.astro';
+import MenuApp from './sections/menuapp'
+
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <Header />
+    <main >
+      <slot />
+    </main>
+    <MenuApp client:load />
+  </body>
+</html>
+
+<style is:global>
+  /* Ocultar barras de desplazamiento para Chrome, Safari y Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ocultar barras de desplazamiento para IE, Edge y Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Asegurar que el contenido principal tenga scroll */
+html, body {
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+</style>

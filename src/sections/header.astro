@@ -1,0 +1,58 @@
+---
+// Header.astro
+---
+
+<header class="px-4 pt-6 pb-4 bg-white">
+
+
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold text-gray-900 mb-1">Let's eat</h1>
+    <p class="text-xl text-gray-600">Nutrious food.</p>
+  </div>
+
+  <div class="relative">
+    <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+      <svg 
+        width="20" 
+        height="20" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        class="text-gray-400"
+      >
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </div>
+    <input
+      type="search"
+      placeholder="Find your food here..."
+      class="w-full py-3 pl-10 pr-12 bg-gray-100 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200"
+    />
+    <button 
+      class="absolute inset-y-0 right-3 flex items-center"
+      aria-label="Filter"
+    >
+      <svg 
+        width="20" 
+        height="20" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="2" 
+        class="text-gray-400"
+      >
+        <line x1="4" y1="21" x2="4" y2="14"></line>
+        <line x1="4" y1="10" x2="4" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="12"></line>
+        <line x1="12" y1="8" x2="12" y2="3"></line>
+        <line x1="20" y1="21" x2="20" y2="16"></line>
+        <line x1="20" y1="12" x2="20" y2="3"></line>
+        <line x1="1" y1="14" x2="7" y2="14"></line>
+        <line x1="9" y1="8" x2="15" y2="8"></line>
+        <line x1="17" y1="16" x2="23" y2="16"></line>
+      </svg>
+    </button>
+  </div>
+</header>
