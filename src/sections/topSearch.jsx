@@ -52,7 +52,7 @@ const TopSearch = () => {
       </div>
 
       {searchTerm && (
-        <div className='absolute left-0 right-0 bg-white border-t border-gray-200 max-h-60 overflow-y-auto shadow-md'>
+        <div className='absolute left-0 right-0 bg-white border-t border-gray-200 max-h-60 overflow-y-auto'>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
               <a

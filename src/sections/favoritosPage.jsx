@@ -72,10 +72,7 @@ export default function FavoritosPage() {
         ) : (
           <div className='space-y-6'>
             {favoriteRecipes.map((recipe) => (
-              <div
-                key={recipe.slug}
-                className='bg-white hover:shadow-md transition-shadow duration-300'
-              >
+              <div key={recipe.slug} className='bg-white'>
                 <article className='relative'>
                   <a href={`/receta/${recipe.slug}`} className='block'>
                     <div className='relative aspect-video rounded-xl overflow-hidden'>
