@@ -9,30 +9,43 @@ export default function Recomendaciones() {
       const allRecipes = await getCollection('receta');
       const randomRecipes = allRecipes
         .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+        .slice(0, 6);
       setRecommendedRecipes(randomRecipes);
     }
     fetchRecommendations();
   }, []);
 
   return (
-    <section>
-      <div className='container'>
+    <section className='py-4'>
+      <div className='container mx-auto px-4'>
         <h2 className='text-2xl font-bold mb-4'>Recomendados</h2>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-          {recommendedRecipes.map((recipe) => (
-            <div key={recipe.slug} className='bg-white rounded-lg w-80'>
-              {recipe.data.image && (
-                <img
-                  src={recipe.data.image}
-                  alt={recipe.data.title}
-                  className='w-full object-cover aspect-[4/3] rounded-md mb-2'
-                />
-              )}
-              <h3 className='text-lg font-semibold'>{recipe.data.title}</h3>
-              <p className='text-sm text-gray-600'>{recipe.data.category}</p>
-            </div>
-          ))}
+        <div className='relative'>
+          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory'>
+            {recommendedRecipes.map((recipe) => (
+              <a
+                href='/'
+                key={recipe.slug}
+                className='flex-none w-64 snap-center'
+              >
+                <div>
+                  {recipe.data.image && (
+                    <img
+                      src={recipe.data.image}
+                      alt={recipe.data.title}
+                      className='w-full aspect-[4/3] object-cover rounded-lg mb-2'
+                    />
+                  )}
+
+                  <h3 className='text-lg font-semibold mb-1 truncate'>
+                    {recipe.data.title}
+                  </h3>
+                  <p className='text-sm text-gray-600 mb-2'>
+                    {recipe.data.category}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

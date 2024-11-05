@@ -3,12 +3,18 @@ import Categorias from '../sections/categorias'
 import Recomendaciones from '../sections/recomendaciones'
 import Resultados from '../sections/resultados'
 import MenuApp from '../sections/menuapp'
-import Layout from '../layout.astro';
+import Header from '../sections/header';
+import TopSearch from '../sections/topSearch';
+import Layout from '../layouts/mainLayout.astro';
 ---
 
 <Layout title="Recetas para mi esposa">
+  <Header/>
+  
+  <TopSearch client:load/>
   <Recomendaciones client:load />
   <Categorias client:load />
-  <MenuApp client:load />
   <Resultados client:load />
+
+  <MenuApp client:load />
 </Layout>

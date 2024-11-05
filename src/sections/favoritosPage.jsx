@@ -1,7 +1,6 @@
-'use client';
-
+import { useState, useEffect } from 'react';
+import { getCollection } from 'astro:content';
 import {
-  Clock,
   ChefHat,
   Leaf,
   Flame,
@@ -10,41 +9,22 @@ import {
   Cake,
   Sandwich,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
-import { getCollection } from 'astro:content';
-import { useStore } from '@nanostores/react';
-import { selectedIngredients, selectedCategory } from '../stores/filter';
 import FavoriteButton from '../ui/botonFavoritos';
 
-export default function Resultados() {
-  const [recipes, setRecipes] = useState([]);
-  const $selectedIngredients = useStore(selectedIngredients);
-  const $selectedCategory = useStore(selectedCategory);
+export default function FavoritosPage() {
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   useEffect(() => {
-    async function fetchAndFilterRecipes() {
+    async function fetchFavoriteRecipes() {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
       const allRecipes = await getCollection('receta');
-
-      let filteredRecipes = allRecipes;
-
-      if ($selectedCategory) {
-        filteredRecipes = filteredRecipes.filter(
-          (recipe) => recipe.data.category === $selectedCategory
-        );
-      }
-
-      if ($selectedIngredients.length > 0) {
-        filteredRecipes = filteredRecipes.filter((recipe) =>
-          $selectedIngredients.every((ingredient) =>
-            recipe.data.ingredients.includes(ingredient)
-          )
-        );
-      }
-
-      setRecipes(filteredRecipes);
+      const filteredRecipes = allRecipes.filter((recipe) =>
+        favorites.includes(recipe.slug)
+      );
+      setFavoriteRecipes(filteredRecipes);
     }
-    fetchAndFilterRecipes();
-  }, [$selectedIngredients, $selectedCategory]);
+    fetchFavoriteRecipes();
+  }, []);
 
   const getDifficultyInfo = (difficulty) => {
     const levels = {
@@ -82,18 +62,16 @@ export default function Resultados() {
     <section className='py-4'>
       <div className='container mx-auto px-4'>
         <h4 className='text-base font-medium text-gray-900 mb-4'>
-          {$selectedCategory
-            ? `Recetas de ${$selectedCategory}`
-            : 'Todas las Recetas'}
+          Mis Recetas Favoritas
         </h4>
 
-        {recipes.length === 0 ? (
+        {favoriteRecipes.length === 0 ? (
           <p className='text-sm text-gray-500'>
-            No se encontraron recetas con los filtros seleccionados.
+            Aún no has guardado ninguna receta como favorita.
           </p>
         ) : (
           <div className='space-y-6'>
-            {recipes.map((recipe) => (
+            {favoriteRecipes.map((recipe) => (
               <div
                 key={recipe.slug}
                 className='bg-white hover:shadow-md transition-shadow duration-300'

@@ -1,7 +1,4 @@
 ---
-// src/layouts/Layout.astro
-import Header from './sections/header.astro';
-
 interface Props {
   title: string;
 }
@@ -22,11 +19,7 @@ const { title } = Astro.props;
       Porfavor usar en celular
     </div>
     <div class="md:hidden">
-
-      <Header />
-      <main >
         <slot />
-      </main>
     </div>
   </body>
 </html>
@@ -44,8 +37,8 @@ const { title } = Astro.props;
 }
 
 /* Asegurar que el contenido principal tenga scroll */
-html, body {
+/* html, body {
   overflow-y: auto;
   overscroll-behavior-y: contain;
-}
+} */
 </style>

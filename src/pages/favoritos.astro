@@ -1,0 +1,13 @@
+---
+import FavoritosPage from '../sections/favoritosPage';
+import MenuApp from '../sections/menuapp';
+import TopSearch from '../sections/topSearch';
+
+import Layout from '../layouts/mainLayout.astro';
+---
+
+<Layout title="Mis Recetas Favoritas">
+  <TopSearch  client:load/>
+  <FavoritosPage client:load />
+  <MenuApp client:load />
+</Layout>
