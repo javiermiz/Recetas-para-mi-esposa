@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/recipeLayout.astro
 title: Ensalada de Quinoa y Pollo
 slug: ensalada-de-quinoa-y-pollo
 category: almuerzo

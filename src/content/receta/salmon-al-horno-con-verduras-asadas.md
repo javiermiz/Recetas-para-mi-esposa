@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/recipeLayout.astro
 title: Salmón al Horno con Verduras Asadas
 slug: salmon-al-horno-con-verduras-asadas
 category: cena

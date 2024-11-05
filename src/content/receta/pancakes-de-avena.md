@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/recipeLayout.astro
 title: Pancakes de Avena
 slug: pancakes-de-avena
 category: desayuno

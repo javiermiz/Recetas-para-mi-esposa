@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/recipeLayout.astro
 title: Huevos Rancheros
 slug: huevos-rancheros
 category: desayuno
