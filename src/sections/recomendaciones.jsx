@@ -50,11 +50,11 @@ export default function Recomendaciones() {
   }, []);
 
   return (
-    <section className='py-4'>
-      <div className='container mx-auto px-4'>
-        <h2 className='text-2xl font-bold mb-4'>Recomendados</h2>
+    <section className='pb-4'>
+      <div className='container px-0'>
+        <h2 className='text-2xl font-black mb-4 px-4'>Recomendados</h2>
         <div className='relative'>
-          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide'>
+          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-4'>
             {recommendedRecipes.map((recipe) => (
               <div key={recipe.slug} className='flex-none w-64 snap-center'>
                 <article className='relative'>

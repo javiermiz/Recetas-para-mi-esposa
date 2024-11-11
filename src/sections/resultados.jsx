@@ -81,12 +81,6 @@ export default function Resultados() {
   return (
     <section className='py-4'>
       <div className='container mx-auto px-4'>
-        <h4 className='text-base font-medium text-gray-900 mb-4'>
-          {$selectedCategory
-            ? `Recetas de ${$selectedCategory}`
-            : 'Todas las Recetas'}
-        </h4>
-
         {recipes.length === 0 ? (
           <p className='text-sm text-gray-500'>
             No se encontraron recetas con los filtros seleccionados.

@@ -38,9 +38,9 @@ export default function Categorias() {
   }, []);
 
   return (
-    <section className='pt-4 relative'>
+    <section className='pb-4 relative'>
       <div className='container'>
-        <h2 className='text-2xl font-bold mb-4'>Recetas</h2>
+        <h2 className='text-2xl font-black mb-4'>Recetas</h2>
         <div
           className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2'
           style={{
