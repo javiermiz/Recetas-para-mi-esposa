@@ -39,10 +39,10 @@ export default function Categorias() {
 
   return (
     <section className='pt-4 relative'>
-      <div className='container mx-auto px-4'>
+      <div className='container'>
         <h2 className='text-2xl font-bold mb-4'>Recetas</h2>
         <div
-          className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide'
+          className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2'
           style={{
             scrollBehavior: 'smooth',
             WebkitOverflowScrolling: 'touch',
@@ -55,7 +55,7 @@ export default function Categorias() {
             const IconComponent = categoryIcons[category]?.icon || Pizza;
             const iconColor = categoryIcons[category]?.color || 'bg-gray-500';
             return (
-              <div key={category} className='snap-start flex-shrink-0 px-2'>
+              <div key={category} className='snap-start flex-shrink-0'>
                 <button
                   onClick={() =>
                     setCategory(

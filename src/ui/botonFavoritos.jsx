@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Heart } from 'lucide-react';
 
 export default function FavoriteButton({ recipeSlug }) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -21,8 +22,16 @@ export default function FavoriteButton({ recipeSlug }) {
   };
 
   return (
-    <button onClick={toggleFavorite} className='text-2xl'>
-      {isFavorite ? '❤️' : '🤍'}
+    <button
+      onClick={toggleFavorite}
+      className='p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors'
+      aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+    >
+      <Heart
+        className={`w-6 h-6 ${
+          isFavorite ? 'fill-current text-red-500' : 'text-gray-400'
+        }`}
+      />
     </button>
   );
 }

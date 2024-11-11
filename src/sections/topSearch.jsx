@@ -21,10 +21,6 @@ const TopSearch = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleFilter = () => {
-    console.log('Open filter drawer');
-  };
-
   return (
     <div className='container py-4 sticky top-0 bg-white z-10'>
       <div className='relative'>
@@ -45,7 +41,7 @@ const TopSearch = () => {
         <input
           type='search'
           placeholder='Buscar por nombre o ingrediente'
-          className='w-full py-3 pl-10 pr-12 bg-gray-100 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200'
+          className='w-full py-3 pl-10 pr-12 border rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-200'
           value={searchTerm}
           onChange={handleSearch}
         />
