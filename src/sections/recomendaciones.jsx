@@ -56,12 +56,12 @@ export default function Recomendaciones() {
   return (
     <section className='pb-4'>
       <div className='container px-0'>
-        <div className='mb-4 px-4 flex items-center gap-4'>
-          <SectionTitle>Recomendados para {currentCategory} </SectionTitle>
+        <div className='container mb-4 flex items-center gap-4'>
+          <SectionTitle>{currentCategory}</SectionTitle>
           <CategoryIcon className='inline-block' category={currentCategory} />
         </div>
         <div className='relative'>
-          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-4'>
+          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-8'>
             {recommendedRecipes.map((recipe) => (
               <div key={recipe.slug} className='flex-none w-64 snap-center'>
                 <article className='relative'>

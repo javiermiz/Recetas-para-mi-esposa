@@ -51,7 +51,7 @@ export default function Resultados() {
 
   return (
     <section>
-      <div className='container mx-auto px-4'>
+      <div className='container'>
         {recipes.length === 0 ? (
           <p className='text-sm text-gray-500'>
             No se encontraron recetas con los filtros seleccionados.
