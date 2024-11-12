@@ -31,7 +31,7 @@ const TopSearch = () => {
   };
 
   return (
-    <div className='container py-4 sticky top-0 bg-gray-50 z-50'>
+    <div className='container px-5 py-4 sticky top-0 bg-rose-500 z-50 rounded-b-2xl'>
       <div className='relative max-w-2xl mx-auto'>
         <div className='group relative'>
           <div className='absolute inset-y-0 left-4 flex items-center pointer-events-none'>
@@ -43,9 +43,9 @@ const TopSearch = () => {
 
           <input
             type='search'
-            placeholder='Buscar por nombre o ingrediente...'
-            className='w-full py-3 pl-12 pr-4 bg-white border border-gray-200 rounded-2xl 
-                     text-gray-900 placeholder-gray-500 shadow-sm
+            placeholder='¿Qué se te antoja hoy?'
+            className='w-full py-3 pl-12 pr-4 bg-white border border-gray-200 rounded-full 
+                     text-gray-900 placeholder-gray-500
                      transition-all duration-200
                      focus:outline-none focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500'
             value={searchTerm}

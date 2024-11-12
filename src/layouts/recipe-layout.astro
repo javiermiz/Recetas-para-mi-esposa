@@ -1,9 +1,7 @@
 ---
 // src/layouts/recipe-layout.astro
-import TopSearch from '../sections/busqueda-global';
-import MenuApp from '../sections/navegacion-app';
 import Layout from './main-layout.astro';
-import { Image } from 'astro:assets';
+
 
 const { frontmatter } = Astro.props;
 ---
@@ -12,32 +10,13 @@ const { frontmatter } = Astro.props;
 
     {
       frontmatter.image && (
-        <Image
+        <img
           src={frontmatter.image}
           alt={frontmatter.title}
-          width={800}
-          height={400}
-          class='object-cover w-full h-[30dvh]'
+          class='object-cover w-full h-[50dvh]'
         />
       )
     }
-    <nav class='sticky top-0 bg-gray-50 z-10 mb-4'>
-      <div class='flex overflow-x-auto whitespace-nowrap scrollbar-hide'>
-        <a
-          href='#ingredientes'
-          class='px-6 py-3 flex-1 text-sm text-center font-medium text-rose-700 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-200 transition-colors'
-        >
-          Ingredientes
-        </a>
-        <a
-          href='#instrucciones'
-          class='px-6 py-3 text-sm flex-1 text-center font-medium text-rose-700 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-200 transition-colors'
-        >
-          Instrucciones
-        </a>
-      </div>
-    </nav>
-
 
   
 
@@ -66,12 +45,4 @@ const { frontmatter } = Astro.props;
       </div>
     </section>
   </article>
-
-  <MenuApp client:load />
-
-  <style is:global>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
 </Layout>

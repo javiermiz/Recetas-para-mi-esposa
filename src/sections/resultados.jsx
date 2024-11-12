@@ -1,15 +1,5 @@
 'use client';
 
-import {
-  Clock,
-  ChefHat,
-  Leaf,
-  Flame,
-  Coffee,
-  Pizza,
-  Cake,
-  Sandwich,
-} from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getCollection } from 'astro:content';
 import { useStore } from '@nanostores/react';
@@ -59,10 +49,7 @@ export default function Resultados() {
         ) : (
           <div className='space-y-6'>
             {recipes.map((recipe) => (
-              <article
-                className='relative border-b border-rose-200'
-                key={recipe.slug}
-              >
+              <article className='relative border-b' key={recipe.slug}>
                 <a href={`/receta/${recipe.slug}`} className='block'>
                   <div className='relative aspect-video rounded-xl overflow-hidden'>
                     <img

@@ -7,7 +7,7 @@ export default function CookingInfo({ prepTime, cookTime, ingredientsCount }) {
   };
 
   return (
-    <div className='flex flex-col justify-center gap-1 text-sm text-gray-500 mb-2 '>
+    <div className='flex items-center gap-2 text-sm text-gray-500 mb-2 '>
       <div className='flex items-center gap-1'>
         <ChefHat className='w-4 h-4 text-rose-700' />
         <span>{getCookingTime(prepTime, cookTime)} min</span>

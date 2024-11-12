@@ -54,7 +54,7 @@ export default function Recomendaciones() {
   }, []);
 
   return (
-    <section className='pb-4'>
+    <section className='py-6'>
       <div className='container px-0'>
         <div className='container mb-4 flex items-center gap-4'>
           <SectionTitle>{currentCategory}</SectionTitle>
@@ -63,10 +63,10 @@ export default function Recomendaciones() {
         <div className='relative'>
           <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-6'>
             {recommendedRecipes.map((recipe) => (
-              <div key={recipe.slug} className='flex-none w-64 snap-center'>
+              <div key={recipe.slug} className='flex-none w-72 snap-center'>
                 <article className='relative'>
                   <a href={`/receta/${recipe.slug}`} className='block'>
-                    <div className='relative aspect-square rounded-3xl overflow-hidden'>
+                    <div className='relative aspect-video rounded-3xl overflow-hidden'>
                       <img
                         src={
                           recipe.data.image ||
