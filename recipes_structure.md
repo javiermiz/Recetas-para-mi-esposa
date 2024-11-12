@@ -14,7 +14,7 @@ Each recipe file starts with frontmatter, delimited by triple dashes (`---`). Th
 
 ```yaml
 ---
-layout: ../../layouts/RecipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 slug: url-friendly-recipe-name
 title: Recipe Title
 extract: A brief description of the recipe for previews

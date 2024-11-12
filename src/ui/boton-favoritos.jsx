@@ -29,7 +29,7 @@ export default function FavoriteButton({ recipeSlug }) {
     >
       <Heart
         className={`w-6 h-6 ${
-          isFavorite ? 'fill-current text-red-500' : 'text-gray-400'
+          isFavorite ? 'fill-current text-rose-500' : 'text-gray-400'
         }`}
       />
     </button>

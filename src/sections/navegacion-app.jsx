@@ -13,12 +13,12 @@ export default function MenuApp() {
   }, []);
 
   return (
-    <div className='fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-10'>
+    <div className='fixed bottom-0 left-0 right-0 bg-gray-50 border-t border-gray-200 z-10'>
       <div className='flex justify-around items-center h-16'>
         <a
           href='/'
           className={`flex flex-col items-center ${
-            activeTab === 'home' ? 'text-rose-500' : 'text-gray-600'
+            activeTab === 'home' ? 'text-rose-700' : 'text-gray-600'
           }`}
         >
           <svg
@@ -40,7 +40,7 @@ export default function MenuApp() {
         <a
           href='/favoritos'
           className={`flex flex-col items-center ${
-            activeTab === 'favorites' ? 'text-rose-500' : 'text-gray-600'
+            activeTab === 'favorites' ? 'text-rose-700' : 'text-gray-600'
           }`}
         >
           <svg

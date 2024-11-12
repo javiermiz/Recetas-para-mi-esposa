@@ -1,50 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { getCollection } from 'astro:content';
-import {
-  Clock,
-  ChefHat,
-  Leaf,
-  Flame,
-  Coffee,
-  Pizza,
-  Cake,
-  Sandwich,
-} from 'lucide-react';
-import FavoriteButton from '../ui/botonFavoritos';
+import FavoriteButton from '../ui/boton-favoritos';
+import CookingInfo from '../ui/icono-tiempo-coccion';
+import { SectionTitle } from '../ui/section-title';
+import CategoryIcon from '../ui/icono-categoria';
 
 export default function Recomendaciones() {
   const [recommendedRecipes, setRecommendedRecipes] = useState([]);
-
-  const getCategoryInfo = (category) => {
-    const categories = {
-      desayuno: { icon: <Coffee className='w-4 h-4' />, color: 'bg-amber-500' },
-      almuerzo: {
-        icon: <Pizza className='w-4 h-4' />,
-        color: 'bg-emerald-500',
-      },
-      cena: { icon: <Sandwich className='w-4 h-4' />, color: 'bg-indigo-500' },
-      snack: { icon: <Cake className='w-4 h-4' />, color: 'bg-rose-500' },
-    };
-    return (
-      categories[category] || {
-        icon: <Pizza className='w-4 h-4' />,
-        color: 'bg-gray-500',
-      }
-    );
-  };
-
-  const getCookingTime = (prepTime, cookTime) => {
-    const totalTime = parseInt(prepTime) + parseInt(cookTime);
-    return isNaN(totalTime) ? '-- ' : totalTime;
-  };
+  const [currentCategory, setCurrentCategory] = useState('');
 
   useEffect(() => {
     async function fetchRecommendations() {
       const allRecipes = await getCollection('receta');
-      const randomRecipes = allRecipes
+      const currentHour = new Date().getHours();
+
+      let category;
+      if (currentHour >= 5 && currentHour < 11) {
+        category = 'desayuno';
+      } else if (currentHour >= 11 && currentHour < 15) {
+        category = 'almuerzo';
+      } else if (currentHour >= 15 && currentHour < 22) {
+        category = 'cena';
+      } else {
+        category = 'snack';
+      }
+
+      setCurrentCategory(category);
+
+      const filteredRecipes = allRecipes.filter(
+        (recipe) =>
+          recipe.data.category === category || recipe.data.category === 'snack'
+      );
+
+      const selectedRecipes = filteredRecipes
         .sort(() => 0.5 - Math.random())
         .slice(0, 6);
-      setRecommendedRecipes(randomRecipes);
+
+      // Ensure at least one snack if available
+      const snackRecipe = allRecipes.find(
+        (recipe) => recipe.data.category === 'snack'
+      );
+      if (
+        snackRecipe &&
+        !selectedRecipes.some((recipe) => recipe.data.category === 'snack')
+      ) {
+        selectedRecipes.pop();
+        selectedRecipes.push(snackRecipe);
+      }
+
+      setRecommendedRecipes(selectedRecipes);
     }
     fetchRecommendations();
   }, []);
@@ -52,7 +56,10 @@ export default function Recomendaciones() {
   return (
     <section className='pb-4'>
       <div className='container px-0'>
-        <h2 className='text-2xl font-black mb-4 px-4'>Recomendados</h2>
+        <div className='mb-4 px-4 flex items-center gap-4'>
+          <SectionTitle>Recomendados para {currentCategory} </SectionTitle>
+          <CategoryIcon className='inline-block' category={currentCategory} />
+        </div>
         <div className='relative'>
           <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-4'>
             {recommendedRecipes.map((recipe) => (
@@ -75,24 +82,12 @@ export default function Recomendaciones() {
                         {recipe.data.title}
                       </h3>
                     </div>
-                    <div className='flex flex-col justify-center gap-4 text-sm text-gray-500 mb-3'>
-                      <div className='flex items-center gap-1'>
-                        <ChefHat className='w-4 h-4' />
-                        <span>
-                          {getCookingTime(
-                            recipe.data.prepTime,
-                            recipe.data.cookTime
-                          )}{' '}
-                          min
-                        </span>
-                      </div>
-                      <div className='flex items-center gap-1'>
-                        <Leaf className='w-4 h-4' />
-                        <span>
-                          {recipe.data.ingredients.length} ingredientes
-                        </span>
-                      </div>
-                    </div>
+
+                    <CookingInfo
+                      cookTime={recipe.data.cookTime}
+                      prepTime={recipe.data.prepTime}
+                      ingredientsCount={recipe.data.ingredients.length}
+                    />
                   </a>
                   <div className='absolute top-2 right-2'>
                     <FavoriteButton recipeSlug={recipe.slug} />

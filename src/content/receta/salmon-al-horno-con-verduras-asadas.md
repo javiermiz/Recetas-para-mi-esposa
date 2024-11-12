@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/recipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 title: Salmón al Horno con Verduras Asadas
 slug: salmon-al-horno-con-verduras-asadas
 category: cena
@@ -21,7 +21,7 @@ servings: 2
 image: /images/salmon-al-horno-con-verduras-asadas.jpg
 ---
 
-# Instrucciones
+## Instrucciones
 
 1. Precalienta el horno a 200°C (400°F). Si tu horno tiene función de convección, úsala para obtener verduras más crujientes.
 

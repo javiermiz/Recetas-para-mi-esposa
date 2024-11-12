@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/recipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 title: Huevos Rancheros
 slug: huevos-rancheros
 category: desayuno
@@ -21,7 +21,7 @@ servings: 2
 image: /images/huevos-rancheros.jpg
 ---
 
-# Instrucciones
+## Instrucciones
 
 1. Prepara todos los ingredientes: pica finamente 1/4 de cebolla y un puñado de cilantro, corta 1 aguacate en rodajas, y desmenuza 100g de queso fresco.
 
@@ -51,7 +51,7 @@ image: /images/huevos-rancheros.jpg
 
 14. Sirve inmediatamente mientras está caliente.
 
-# Notas
+## Notas
 
 - Si prefieres los huevos más cocidos, puedes cubrirlos con una tapa durante la cocción o voltearlos cuidadosamente.
 - Puedes ajustar la cantidad de salsa y queso según tu preferencia.

@@ -5,13 +5,14 @@ import { getCollection } from 'astro:content';
 import { useStore } from '@nanostores/react';
 import { selectedCategory, setCategory } from '../stores/filter';
 import { Coffee, Pizza, Sandwich, Cake, GlassWater } from 'lucide-react';
+import { SectionTitle } from '../ui/section-title';
 
 const categoryOrder = ['desayuno', 'almuerzo', 'cena', 'snack', 'bebida'];
 
 const categoryIcons = {
   desayuno: { icon: Coffee, color: 'bg-amber-500' },
-  almuerzo: { icon: Pizza, color: 'bg-emerald-500' },
-  cena: { icon: Sandwich, color: 'bg-indigo-500' },
+  almuerzo: { icon: Sandwich, color: 'bg-indigo-500' },
+  cena: { icon: Pizza, color: 'bg-emerald-500' },
   snack: { icon: Cake, color: 'bg-rose-500' },
   bebida: { icon: GlassWater, color: 'bg-blue-500' },
 };
@@ -40,15 +41,15 @@ export default function Categorias() {
   return (
     <section className='pb-4 relative'>
       <div className='container'>
-        <h2 className='text-2xl font-black mb-4'>Recetas</h2>
+        <div className='mb-2'>
+          <SectionTitle>Recetas</SectionTitle>
+        </div>
         <div
           className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2'
           style={{
             scrollBehavior: 'smooth',
             WebkitOverflowScrolling: 'touch',
             scrollSnapType: 'x mandatory',
-            paddingBottom: '20px',
-            marginBottom: '-20px',
           }}
         >
           {categories.map((category) => {

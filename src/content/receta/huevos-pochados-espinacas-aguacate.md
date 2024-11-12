@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/recipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 slug: huevos-pochados-espinacas-aguacate
 title: Huevos Pochados sobre Cama de Espinacas y Aguacate
 extract: Huevos enteros pochados sobre espinacas salteadas y rodajas de aguacate fresco, un desayuno nutritivo y delicioso.
@@ -18,8 +18,6 @@ cookTime: 15 minutos
 servings: 1 porción
 image: /images/Huevos pochados sobre cama de espinacas y aguacate.jpeg
 ---
-
-# Huevos Pochados sobre Cama de Espinacas y Aguacate
 
 ## Ingredientes
 

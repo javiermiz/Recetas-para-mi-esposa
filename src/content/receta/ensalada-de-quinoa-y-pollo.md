@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/recipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 title: Ensalada de Quinoa y Pollo
 slug: ensalada-de-quinoa-y-pollo
 category: almuerzo
@@ -22,7 +22,7 @@ servings: 2
 image: /images/ensalada-de-quinoa-y-pollo.jpg
 ---
 
-# Instrucciones
+## Instrucciones
 
 1. Enjuaga 1 taza de quinoa en un colador fino bajo agua fría durante 30 segundos.
 
@@ -54,7 +54,7 @@ image: /images/ensalada-de-quinoa-y-pollo.jpg
 
 15. Sirve inmediatamente o refrigera hasta por 2 horas antes de servir.
 
-# Notas
+## Notas
 
 - Puedes preparar la quinoa y el pollo con anticipación y refrigerarlos para hacer la ensalada más rápidamente al día siguiente.
 - Si no tienes quinoa, puedes sustituirla por arroz integral o cuscús.

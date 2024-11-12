@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/recipeLayout.astro
+layout: ../../layouts/recipe-layout.astro
 title: Pancakes de Avena
 slug: pancakes-de-avena
 category: desayuno
@@ -14,7 +14,7 @@ servings: 2
 image: /images/pancakes-de-avena.jpg
 ---
 
-# Instrucciones
+## Instrucciones
 
 1. En un tazón grande, mezcla la avena, el polvo de hornear y la sal.
 2. En otro tazón, bate el huevo y la leche.

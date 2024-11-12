@@ -1,64 +1,39 @@
-'use client';
-
-import {
-  Clock,
-  ChefHat,
-  Leaf,
-  Flame,
-  Coffee,
-  Pizza,
-  Cake,
-  Sandwich,
-} from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { getCollection } from 'astro:content';
-import { useStore } from '@nanostores/react';
-import { selectedIngredients, selectedCategory } from '../stores/filter';
-import FavoriteButton from '../ui/boton-favoritos';
-import CookingInfo from '../ui/icono-tiempo-coccion';
-import CategoryIcon from '../ui/icono-categoria';
-import DifficultyBadge from '../ui/icono-dificultad';
 
-export default function Resultados() {
-  const [recipes, setRecipes] = useState([]);
-  const $selectedIngredients = useStore(selectedIngredients);
-  const $selectedCategory = useStore(selectedCategory);
+import FavoriteButton from '../ui/boton-favoritos';
+import DifficultyBadge from '../ui/icono-dificultad';
+import CategoryIcon from '../ui/icono-categoria';
+import CookingInfo from '../ui/icono-tiempo-coccion';
+import { SectionTitle } from '../ui/section-title';
+
+export default function FavoritosPage() {
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   useEffect(() => {
-    async function fetchAndFilterRecipes() {
+    async function fetchFavoriteRecipes() {
+      const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
       const allRecipes = await getCollection('receta');
-
-      let filteredRecipes = allRecipes;
-
-      if ($selectedCategory) {
-        filteredRecipes = filteredRecipes.filter(
-          (recipe) => recipe.data.category === $selectedCategory
-        );
-      }
-
-      if ($selectedIngredients.length > 0) {
-        filteredRecipes = filteredRecipes.filter((recipe) =>
-          $selectedIngredients.every((ingredient) =>
-            recipe.data.ingredients.includes(ingredient)
-          )
-        );
-      }
-
-      setRecipes(filteredRecipes);
+      const filteredRecipes = allRecipes.filter((recipe) =>
+        favorites.includes(recipe.slug)
+      );
+      setFavoriteRecipes(filteredRecipes);
     }
-    fetchAndFilterRecipes();
-  }, [$selectedIngredients, $selectedCategory]);
+    fetchFavoriteRecipes();
+  }, []);
 
   return (
-    <section>
+    <section className='py-4'>
       <div className='container mx-auto px-4'>
-        {recipes.length === 0 ? (
+        <SectionTitle className='mb-4'>Mis Recetas Favoritas</SectionTitle>
+
+        {favoriteRecipes.length === 0 ? (
           <p className='text-sm text-gray-500'>
-            No se encontraron recetas con los filtros seleccionados.
+            Aún no has guardado ninguna receta como favorita.
           </p>
         ) : (
           <div className='space-y-6'>
-            {recipes.map((recipe) => (
+            {favoriteRecipes.map((recipe) => (
               <div key={recipe.slug}>
                 <article className='relative'>
                   <a href={`/receta/${recipe.slug}`} className='block'>
