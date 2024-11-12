@@ -17,7 +17,7 @@ export default function MenuApp() {
       <div className='flex justify-around items-center h-16'>
         <a
           href='/'
-          className={`flex flex-col items-center ${
+          className={`flex flex-col flex-1 items-center ${
             activeTab === 'home' ? 'text-rose-700' : 'text-gray-600'
           }`}
         >
@@ -39,7 +39,7 @@ export default function MenuApp() {
         </a>
         <a
           href='/favoritos'
-          className={`flex flex-col items-center ${
+          className={`flex flex-1 flex-col items-center ${
             activeTab === 'favorites' ? 'text-rose-700' : 'text-gray-600'
           }`}
         >
