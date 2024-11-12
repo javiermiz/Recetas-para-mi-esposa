@@ -8,6 +8,7 @@ export default defineConfig({
     tailwind(),
     react(),
     AstroPWA({
+      display: 'standalone',
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
