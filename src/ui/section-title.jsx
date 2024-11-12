@@ -2,9 +2,7 @@ import { Children } from 'react';
 
 const SectionTitle = ({ className, children }) => {
   return (
-    <h2 className={`text-2xl font-black capitalize ${className}`}>
-      {children}
-    </h2>
+    <h2 className={`text-xl font-black capitalize ${className}`}>{children}</h2>
   );
 };
 

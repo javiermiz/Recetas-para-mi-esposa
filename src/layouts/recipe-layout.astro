@@ -21,23 +21,7 @@ const { frontmatter } = Astro.props;
         />
       )
     }
-
-  <TopSearch client:load />
-
-  
-
-  <article class='container'>
-    <header id='informacion' class='scroll-mt-36 mb-4'>
-      <h1 class='text-4xl font-bold mb-4'>{frontmatter.title}</h1>
-      <div class='flex flex-wrap gap-4 text-sm text-gray-600'>
-        <p>Categoría: {frontmatter.category}</p>
-        <p>Tiempo de preparación: {frontmatter.prepTime}</p>
-        <p>Tiempo de cocción: {frontmatter.cookTime}</p>
-        <p>Porciones: {frontmatter.servings}</p>
-      </div>
-    </header>
-
-    <nav class='sticky top-20 bg-gray-50 z-10 mb-4'>
+    <nav class='sticky top-0 bg-gray-50 z-10 mb-4'>
       <div class='flex overflow-x-auto whitespace-nowrap scrollbar-hide'>
         <a
           href='#ingredientes'
@@ -53,6 +37,21 @@ const { frontmatter } = Astro.props;
         </a>
       </div>
     </nav>
+
+
+  
+
+  <article class='container pt-4'>
+    <header id='informacion' class='scroll-mt-36 mb-4'>
+      <h1 class='text-xl font-bold mb-2'>{frontmatter.title}</h1>
+      <div class='flex flex-wrap gap-2 text-sm text-gray-600'>
+        <p>Categoría: {frontmatter.category}</p>
+        <p>Tiempo de preparación: {frontmatter.prepTime}</p>
+        <p>Tiempo de cocción: {frontmatter.cookTime}</p>
+        <p>Porciones: {frontmatter.servings}</p>
+      </div>
+    </header>
+
 
     <section id='ingredientes' class='scroll-mt-36 mb-8'>
       <h2 class='text-2xl font-semibold mb-4'>Ingredientes</h2>

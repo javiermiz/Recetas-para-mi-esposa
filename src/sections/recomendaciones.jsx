@@ -78,7 +78,7 @@ export default function Recomendaciones() {
                     </div>
 
                     <div className='flex items-start justify-between gap-2 my-2'>
-                      <h3 className='text-lg font-bold leading-tight'>
+                      <h3 className='text-md font-bold leading-tight'>
                         {recipe.data.title}
                       </h3>
                     </div>

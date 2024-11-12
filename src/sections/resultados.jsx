@@ -59,49 +59,48 @@ export default function Resultados() {
         ) : (
           <div className='space-y-6'>
             {recipes.map((recipe) => (
-              <div key={recipe.slug}>
-                <article className='relative'>
-                  <a href={`/receta/${recipe.slug}`} className='block'>
-                    <div className='relative aspect-video rounded-xl overflow-hidden'>
-                      <img
-                        src={
-                          recipe.data.image ||
-                          '/placeholder.svg?height=360&width=640'
-                        }
-                        alt={recipe.data.title}
-                        className='w-full h-full object-cover rounded-t-xl'
-                      />
-                      <div className='absolute top-2 left-2 flex'>
-                        <DifficultyBadge difficulty={recipe.data.difficulty} />
-                      </div>
+              <article
+                className='relative border-b border-rose-200'
+                key={recipe.slug}
+              >
+                <a href={`/receta/${recipe.slug}`} className='block'>
+                  <div className='relative aspect-video rounded-xl overflow-hidden'>
+                    <img
+                      src={
+                        recipe.data.image ||
+                        '/placeholder.svg?height=360&width=640'
+                      }
+                      alt={recipe.data.title}
+                      className='w-full h-full object-cover rounded-t-xl'
+                    />
+                    <div className='absolute top-2 left-2 flex'>
+                      <DifficultyBadge difficulty={recipe.data.difficulty} />
                     </div>
-
-                    <div className='py-4 flex flex-col gap-2'>
-                      <div className='flex items-start justify-between gap-2'>
-                        <h3 className='text-lg font-bold'>
-                          {recipe.data.title}
-                        </h3>
-
-                        <CategoryIcon category={recipe.data.category} />
-                      </div>
-
-                      <p className='text-sm text-gray-500 line-clamp-2'>
-                        {recipe.data.extract ||
-                          'Una deliciosa receta para disfrutar en casa.'}
-                      </p>
-
-                      <CookingInfo
-                        cookTime={recipe.data.cookTime}
-                        prepTime={recipe.data.prepTime}
-                        ingredientsCount={recipe.data.ingredients.length}
-                      />
-                    </div>
-                  </a>
-                  <div className='absolute top-2 right-2'>
-                    <FavoriteButton recipeSlug={recipe.slug} />
                   </div>
-                </article>
-              </div>
+
+                  <div className='py-4 flex flex-col gap-2'>
+                    <div className='flex items-start justify-between gap-2'>
+                      <h3 className='text-md font-bold'>{recipe.data.title}</h3>
+
+                      <CategoryIcon category={recipe.data.category} />
+                    </div>
+
+                    <p className='text-sm text-gray-500 line-clamp-2'>
+                      {recipe.data.extract ||
+                        'Una deliciosa receta para disfrutar en casa.'}
+                    </p>
+
+                    <CookingInfo
+                      cookTime={recipe.data.cookTime}
+                      prepTime={recipe.data.prepTime}
+                      ingredientsCount={recipe.data.ingredients.length}
+                    />
+                  </div>
+                </a>
+                <div className='absolute top-2 right-2'>
+                  <FavoriteButton recipeSlug={recipe.slug} />
+                </div>
+              </article>
             ))}
           </div>
         )}
