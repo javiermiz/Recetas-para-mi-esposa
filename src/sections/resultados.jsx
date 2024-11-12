@@ -76,25 +76,25 @@ export default function Resultados() {
                       </div>
                     </div>
 
-                    <div className='py-4'>
-                      <div className='flex items-start justify-between gap-2 mb-2'>
-                        <h3 className='text-lg font-semibold text-gray-900'>
+                    <div className='py-4 flex flex-col gap-2'>
+                      <div className='flex items-start justify-between gap-2'>
+                        <h3 className='text-lg font-bold'>
                           {recipe.data.title}
                         </h3>
 
                         <CategoryIcon category={recipe.data.category} />
                       </div>
 
+                      <p className='text-sm text-gray-500 line-clamp-2'>
+                        {recipe.data.extract ||
+                          'Una deliciosa receta para disfrutar en casa.'}
+                      </p>
+
                       <CookingInfo
                         cookTime={recipe.data.cookTime}
                         prepTime={recipe.data.prepTime}
                         ingredientsCount={recipe.data.ingredients.length}
                       />
-
-                      <p className='text-sm text-gray-500 line-clamp-2'>
-                        {recipe.data.extract ||
-                          'Una deliciosa receta para disfrutar en casa.'}
-                      </p>
                     </div>
                   </a>
                   <div className='absolute top-2 right-2'>

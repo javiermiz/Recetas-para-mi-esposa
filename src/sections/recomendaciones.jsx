@@ -61,7 +61,7 @@ export default function Recomendaciones() {
           <CategoryIcon className='inline-block' category={currentCategory} />
         </div>
         <div className='relative'>
-          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-8'>
+          <div className='overflow-x-auto flex gap-4 snap-x snap-mandatory scrollbar-hide px-6'>
             {recommendedRecipes.map((recipe) => (
               <div key={recipe.slug} className='flex-none w-64 snap-center'>
                 <article className='relative'>
@@ -78,7 +78,7 @@ export default function Recomendaciones() {
                     </div>
 
                     <div className='flex items-start justify-between gap-2 my-2'>
-                      <h3 className='text-lg font-semibold text-gray-900 leading-tight'>
+                      <h3 className='text-lg font-bold leading-tight'>
                         {recipe.data.title}
                       </h3>
                     </div>

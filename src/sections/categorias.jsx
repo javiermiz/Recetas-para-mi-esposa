@@ -46,7 +46,7 @@ export default function Categorias() {
         </div>
       </div>
       <div
-        className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2 px-8'
+        className='flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-2 px-6'
         style={{
           scrollBehavior: 'smooth',
           WebkitOverflowScrolling: 'touch',
